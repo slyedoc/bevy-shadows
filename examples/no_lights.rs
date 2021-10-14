@@ -4,7 +4,7 @@ use bevy::prelude::*;
 use bevy_shadows::prelude::*;
 
 fn main() {
-    App::build()
+    App::new()
         .insert_resource(Msaa { samples: 8 })
         .add_plugins(DefaultPlugins)
         .add_plugin(ShadowPlugin::default())

@@ -25,9 +25,9 @@ pub const DIRECTIONAL_LIGHTS_NODE: &str = "direction_lights_node";
 pub const SHADOW_LIGHTS_BIND_NODE: &str = "shadow_lights_bind_node";
 pub const SHADOW_PASS_NODE: &str = "shadow_pass_node";
 
-pub(crate) fn add_render_graph(shadow_plugin: &crate::ShadowPlugin, app: &mut AppBuilder) {
+pub(crate) fn add_render_graph(shadow_plugin: &crate::ShadowPlugin, app: &mut App) {
     let mut shaders = app
-        .world_mut()
+        .world
         .get_resource_mut::<Assets<Shader>>()
         .unwrap();
 
@@ -65,7 +65,7 @@ pub(crate) fn add_render_graph(shadow_plugin: &crate::ShadowPlugin, app: &mut Ap
         });
 
         let mut pipelines = app
-            .world_mut()
+            .world
             .get_resource_mut::<Assets<PipelineDescriptor>>()
             .unwrap();
 
@@ -77,13 +77,13 @@ pub(crate) fn add_render_graph(shadow_plugin: &crate::ShadowPlugin, app: &mut Ap
     }
 
     let mut pipelines = app
-        .world_mut()
+        .world
         .get_resource_mut::<Assets<PipelineDescriptor>>()
         .unwrap();
 
     pipelines.set_untracked(SHADOW_PIPELINE, shadow_pipeline);
 
-    let mut render_graph = app.world_mut().get_resource_mut::<RenderGraph>().unwrap();
+    let mut render_graph = app.world.get_resource_mut::<RenderGraph>().unwrap();
 
     let extent = Extent3d::new(
         shadow_plugin.directional_light_resolution,

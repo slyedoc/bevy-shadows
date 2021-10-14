@@ -8,6 +8,7 @@ const HALF_SIZE: f32 = 25.0;
 const MIN_BIAS: f32 = 0.00001;
 const MAX_BIAS: f32 = 0.00015;
 
+#[derive(Component)]
 pub struct ShadowDirectionalLight {
     /// Left plane of projection.
     pub left: f32,

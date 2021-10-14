@@ -26,7 +26,7 @@ use bytemuck::{cast_slice, Pod, Zeroable};
 use std::borrow::Cow;
 use std::collections::HashMap;
 
-pub(crate) fn shadow_lights_register_system<L: Light>(
+pub(crate) fn shadow_lights_register_system<L: Light + Component>(
     mut shadow_lights: ResMut<ShadowLights>,
     query: Query<Entity, (With<L>, Added<L>)>,
 ) {
@@ -44,11 +44,11 @@ pub(crate) fn shadow_lights_remove_system<L: Light>(
     }
 }
 
-#[derive(Default, Clone, Copy)]
+#[derive(Component, Default, Clone, Copy)]
 pub struct Shadowless;
 
-pub trait Light: Send + Sync + 'static {
-    type Config: Send + Sync + 'static;
+pub trait Light: Component {
+    type Config: Component;
 
     fn proj_matrix(&self, config: Option<&Self::Config>) -> Mat4;
     fn view_matrix(&self) -> Mat4;
@@ -222,6 +222,7 @@ fn shadow_lights_bind_system(
         },
     );
 }
+
 
 pub struct LightsNode<L: Light> {
     query_state: Option<

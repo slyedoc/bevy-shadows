@@ -11,14 +11,9 @@ exclude = ["assets"]
 bytemuck = "1.5.1"
 # NOTE: The following branch just uses the same bevy version as specified below
 # and will need to be updated in lock step
-bevy_mod_bounding = { git = "https://github.com/superdump/bevy_mod_bounding", branch = "bevy-shadows" }
+bevy = "0.5"
+bevy_mod_bounding = { git = "https://github.com/slyedoc/bevy_mod_bounding" }
 
-[dependencies.bevy]
-git = "https://github.com/bevyengine/bevy"
-rev = "e549f143593e90197cb9bc39ab6fed355c8a6681"
-default_features = false
-features = ["render"]
-
-[dev-dependencies.bevy]
-git = "https://github.com/bevyengine/bevy"
-rev = "e549f143593e90197cb9bc39ab6fed355c8a6681"
+[patch.crates-io]
+# Github versions
+bevy = { git = "https://github.com/bevyengine/bevy", branch = "main" }

@@ -43,7 +43,7 @@ impl Default for ShadowPlugin {
 }
 
 impl Plugin for ShadowPlugin {
-    fn build(&self, app: &mut AppBuilder) {
+    fn build(&self, app: &mut App) {
         render_graph::add_render_graph(self, app);
 
         app.insert_resource(ShadowLights::default());
