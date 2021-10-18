@@ -9,11 +9,10 @@ exclude = ["assets"]
 
 [dependencies]
 bytemuck = "1.5.1"
-# NOTE: The following branch just uses the same bevy version as specified below
-# and will need to be updated in lock step
 bevy = "0.5"
-bevy_mod_bounding = { git = "https://github.com/slyedoc/bevy_mod_bounding" }
+bevy_mod_bounding = "0.1"
 
 [patch.crates-io]
 # Github versions
+bevy_mod_bounding = { git = "https://github.com/slyedoc/bevy_mod_bounding" }
 bevy = { git = "https://github.com/bevyengine/bevy", branch = "main" }
