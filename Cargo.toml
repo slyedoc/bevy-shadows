@@ -8,7 +8,7 @@ repository = "https://github.com/ChangeCaps/bevy-shadows"
 exclude = ["assets"]
 
 [dependencies]
-bytemuck = "1.5.1"
+bytemuck = "1.7.2"
 bevy = "0.5"
 bevy_mod_bounding = "0.1"
 
